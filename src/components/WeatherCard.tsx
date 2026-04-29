@@ -15,7 +15,10 @@ export interface WeatherData {
 export default function WeatherCard({data}:{data:WeatherData}) {
   return (
     <div className="weather-card">
-      <p>{data.weather[0].description}</p>
+      <h2>{data.weather[0].description}</h2>
+      <p>temp:{data.main.temp}</p>
+       <p>humidity:{data.main.humidity}</p>
+        <p>speed:{data.wind.speed}</p>
     </div>
   )
     

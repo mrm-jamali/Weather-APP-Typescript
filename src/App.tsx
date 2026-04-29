@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 import { fetchDataWeather } from "./utils/WeatherApi";
 
+
 import WeatherCard from "./components/WeatherCard";
+import type { WeatherData } from "./components/WeatherCard";
+
 
 function App() {
   const [city, setCity] = useState("");
-  const [apiData, setApiData] = useState<WeatherData>();
+  const [apiData, setApiData] = useState<WeatherData | null>(null);
 
   async function submitHandler(e: React.FormEvent) {
     e.preventDefault();
@@ -17,10 +20,10 @@ function App() {
   }
 
   return (
-    <>
+
       <div className="app">
         <h2>Weather App</h2>
-        <div className="searchbar">
+        <div className="search-bar">
           <form onSubmit={submitHandler}>
             <input
               type="text"
@@ -35,9 +38,10 @@ function App() {
             </button>
           </form>
         </div>
-      </div>
           {apiData && <WeatherCard data={apiData}/>}
-    </>
+      </div>
+        
+  
   );
 }
 
